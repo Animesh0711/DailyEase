@@ -28,7 +28,7 @@ let lastSubscriptionResponse = null;  // Store response from create-subscription
 document.addEventListener("DOMContentLoaded", async function () {
     const userId = localStorage.getItem("user_id");
     if (!userId) {
-        window.location.href = "/static/pages/login.html";
+        window.location.href = "login.html";
         return;
     }
 

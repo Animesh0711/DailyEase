@@ -33,7 +33,7 @@ async function handleLogin(e) {
             localStorage.setItem("is_admin", data.is_admin);
 
             alert(data.message);
-            window.location.href = "/static/pages/dashboard.html";
+            window.location.href = "dashboard.html";
         } else {
             alert("Login failed. Please check your credentials.");
         }
@@ -67,7 +67,7 @@ async function handleRegister(e) {
 
         if (response.ok) {
             alert("Registration successful! Please login.");
-            window.location.href = "/static/pages/login.html";
+            window.location.href = "login.html";
         } else {
             const error = await response.json();
             alert(`Registration failed: ${error.detail}`);
@@ -81,6 +81,6 @@ async function handleRegister(e) {
 function logout() {
     if (confirm("Are you sure you want to logout?")) {
         localStorage.clear();
-        window.location.href = "/static/pages/login.html";
+        window.location.href = "login.html";
     }
 }
