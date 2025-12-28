@@ -1,0 +1,47 @@
+/* Preview theme for DailyEaze - soft gradient, modern cards, bright accents */
+:root{
+  --bg-gradient: linear-gradient(120deg,#f6f8ff 0%, #eef6ff 50%, #fef7f3 100%);
+  --card-bg: #ffffff;
+  --primary: #6c5ce7; /* purple */
+  --accent: #00b894; /* teal */
+  --dark: #1f2937;
+  --light: #f3f4f6;
+  --border: #e6e9ef;
+  --success: #2ecc71;
+}
+
+body{ background: var(--bg-gradient); color:var(--dark); font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+.navbar{ background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(0,0,0,0.04); }
+.nav-brand{ color:var(--primary); font-weight:700 }
+
+.main-container{ padding:28px; }
+.section{ margin-bottom:22px }
+.section-header h2{ color:var(--primary) }
+
+/* Cards */
+.subscription-card, .payment-card, .item-card, .milk-brand-card{ background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85)); border-radius:12px; padding:14px; box-shadow: 0 10px 30px rgba(33,50,80,0.06); border:1px solid var(--border) }
+
+.btn{ border-radius:8px; padding:8px 12px; border:none; cursor:pointer }
+.btn-primary{ background:var(--primary); color:#fff }
+.btn-secondary{ background:transparent; border:1px solid rgba(31,41,55,0.06); color:var(--dark) }
+.btn-small{ padding:6px 8px; font-size:0.9rem }
+
+/* Calendar */
+.calendar-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:20px; }
+.month-calendar{ background: linear-gradient(180deg,#fff,#fbfdff); border-radius:12px; padding:12px; }
+.month-header{ color:var(--primary); }
+.month-table thead th{ background:transparent; color:var(--dark); }
+.calendar-cell{ transition: transform 120ms ease; }
+.calendar-cell:hover{ transform: translateY(-4px); box-shadow: 0 6px 18px rgba(39,44,65,0.06) }
+.calendar-cell.marked{ background: linear-gradient(90deg,#e6f8f1,#dff7ef); border:1px solid var(--success) }
+
+/* Milk UI */
+.milk-brand-card{ display:flex; flex-direction:column; gap:8px }
+.milk-row .btn-qty{ background:var(--light); border:1px solid var(--border); }
+
+.price-preview, #milkTotal{ background: linear-gradient(90deg,#fff,#fbfeff); padding:12px; border-radius:10px }
+
+/* Small responsive tweaks */
+@media (max-width: 900px){ .calendar-grid{ grid-template-columns: repeat(2,1fr) } }
+@media (max-width: 480px){ .calendar-grid{ grid-template-columns: 1fr } .nav-menu{ display:none } }

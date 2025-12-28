@@ -1,0 +1,480 @@
+INFO:     Started server process [68248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 452, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 278, in serialize_response
+    raise ResponseValidationError(
+    ...<3 lines>...
+    )
+fastapi.exceptions.ResponseValidationError: 9 validation errors:
+  {'type': 'missing', 'loc': ('response', 0, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908FABE00>}
+  {'type': 'missing', 'loc': ('response', 1, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909051D10>}
+  {'type': 'missing', 'loc': ('response', 2, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909051E50>}
+  {'type': 'missing', 'loc': ('response', 3, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908FE36F0>}
+  {'type': 'missing', 'loc': ('response', 4, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908FE3820>}
+  {'type': 'missing', 'loc': ('response', 5, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9090AC170>}
+  {'type': 'missing', 'loc': ('response', 6, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908FAEBE0>}
+  {'type': 'missing', 'loc': ('response', 7, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908FAECF0>}
+  {'type': 'missing', 'loc': ('response', 8, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909043A50>}
+
+  File "C:\Users\Aparna\Desktop\DailyEaze\app\routes\subscriptions.py", line 13, in get_user_subscriptions
+    GET /api/subscriptions/{user_id}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 452, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 278, in serialize_response
+    raise ResponseValidationError(
+    ...<3 lines>...
+    )
+fastapi.exceptions.ResponseValidationError: 9 validation errors:
+  {'type': 'missing', 'loc': ('response', 0, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091B1350>}
+  {'type': 'missing', 'loc': ('response', 1, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9090723F0>}
+  {'type': 'missing', 'loc': ('response', 2, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9090724E0>}
+  {'type': 'missing', 'loc': ('response', 3, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091C5470>}
+  {'type': 'missing', 'loc': ('response', 4, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091C5630>}
+  {'type': 'missing', 'loc': ('response', 5, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909172B60>}
+  {'type': 'missing', 'loc': ('response', 6, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909069FD0>}
+  {'type': 'missing', 'loc': ('response', 7, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D90906A2D0>}
+  {'type': 'missing', 'loc': ('response', 8, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091314F0>}
+
+  File "C:\Users\Aparna\Desktop\DailyEaze\app\routes\subscriptions.py", line 13, in get_user_subscriptions
+    GET /api/subscriptions/{user_id}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 452, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 278, in serialize_response
+    raise ResponseValidationError(
+    ...<3 lines>...
+    )
+fastapi.exceptions.ResponseValidationError: 9 validation errors:
+  {'type': 'missing', 'loc': ('response', 0, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091314F0>}
+  {'type': 'missing', 'loc': ('response', 1, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091315A0>}
+  {'type': 'missing', 'loc': ('response', 2, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131700>}
+  {'type': 'missing', 'loc': ('response', 3, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131650>}
+  {'type': 'missing', 'loc': ('response', 4, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091317B0>}
+  {'type': 'missing', 'loc': ('response', 5, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091312E0>}
+  {'type': 'missing', 'loc': ('response', 6, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131860>}
+  {'type': 'missing', 'loc': ('response', 7, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131910>}
+  {'type': 'missing', 'loc': ('response', 8, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091319C0>}
+
+  File "C:\Users\Aparna\Desktop\DailyEaze\app\routes\subscriptions.py", line 13, in get_user_subscriptions
+    GET /api/subscriptions/{user_id}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 452, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 278, in serialize_response
+    raise ResponseValidationError(
+    ...<3 lines>...
+    )
+fastapi.exceptions.ResponseValidationError: 9 validation errors:
+  {'type': 'missing', 'loc': ('response', 0, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131650>}
+  {'type': 'missing', 'loc': ('response', 1, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091317B0>}
+  {'type': 'missing', 'loc': ('response', 2, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091312E0>}
+  {'type': 'missing', 'loc': ('response', 3, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131860>}
+  {'type': 'missing', 'loc': ('response', 4, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131910>}
+  {'type': 'missing', 'loc': ('response', 5, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091319C0>}
+  {'type': 'missing', 'loc': ('response', 6, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131A70>}
+  {'type': 'missing', 'loc': ('response', 7, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131BD0>}
+  {'type': 'missing', 'loc': ('response', 8, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131B20>}
+
+  File "C:\Users\Aparna\Desktop\DailyEaze\app\routes\subscriptions.py", line 13, in get_user_subscriptions
+    GET /api/subscriptions/{user_id}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 452, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 278, in serialize_response
+    raise ResponseValidationError(
+    ...<3 lines>...
+    )
+fastapi.exceptions.ResponseValidationError: 9 validation errors:
+  {'type': 'missing', 'loc': ('response', 0, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091315A0>}
+  {'type': 'missing', 'loc': ('response', 1, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091317B0>}
+  {'type': 'missing', 'loc': ('response', 2, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091312E0>}
+  {'type': 'missing', 'loc': ('response', 3, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131860>}
+  {'type': 'missing', 'loc': ('response', 4, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131910>}
+  {'type': 'missing', 'loc': ('response', 5, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091319C0>}
+  {'type': 'missing', 'loc': ('response', 6, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131A70>}
+  {'type': 'missing', 'loc': ('response', 7, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131BD0>}
+  {'type': 'missing', 'loc': ('response', 8, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131B20>}
+
+  File "C:\Users\Aparna\Desktop\DailyEaze\app\routes\subscriptions.py", line 13, in get_user_subscriptions
+    GET /api/subscriptions/{user_id}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 452, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 278, in serialize_response
+    raise ResponseValidationError(
+    ...<3 lines>...
+    )
+fastapi.exceptions.ResponseValidationError: 9 validation errors:
+  {'type': 'missing', 'loc': ('response', 0, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908EE9440>}
+  {'type': 'missing', 'loc': ('response', 1, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908EE9390>}
+  {'type': 'missing', 'loc': ('response', 2, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091317B0>}
+  {'type': 'missing', 'loc': ('response', 3, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131650>}
+  {'type': 'missing', 'loc': ('response', 4, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091314F0>}
+  {'type': 'missing', 'loc': ('response', 5, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091312E0>}
+  {'type': 'missing', 'loc': ('response', 6, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131860>}
+  {'type': 'missing', 'loc': ('response', 7, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131910>}
+  {'type': 'missing', 'loc': ('response', 8, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091319C0>}
+
+  File "C:\Users\Aparna\Desktop\DailyEaze\app\routes\subscriptions.py", line 13, in get_user_subscriptions
+    GET /api/subscriptions/{user_id}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 452, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+    )
+    ^
+  File "C:\Users\Aparna\Desktop\DailyEaze\venv\Lib\site-packages\fastapi\routing.py", line 278, in serialize_response
+    raise ResponseValidationError(
+    ...<3 lines>...
+    )
+fastapi.exceptions.ResponseValidationError: 9 validation errors:
+  {'type': 'missing', 'loc': ('response', 0, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D908EE9390>}
+  {'type': 'missing', 'loc': ('response', 1, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091315A0>}
+  {'type': 'missing', 'loc': ('response', 2, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091317B0>}
+  {'type': 'missing', 'loc': ('response', 3, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131650>}
+  {'type': 'missing', 'loc': ('response', 4, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091314F0>}
+  {'type': 'missing', 'loc': ('response', 5, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091312E0>}
+  {'type': 'missing', 'loc': ('response', 6, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131860>}
+  {'type': 'missing', 'loc': ('response', 7, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D909131910>}
+  {'type': 'missing', 'loc': ('response', 8, 'newspaper_id'), 'msg': 'Field required', 'input': <app.database.models.Subscription object at 0x000001D9091319C0>}
+
+  File "C:\Users\Aparna\Desktop\DailyEaze\app\routes\subscriptions.py", line 13, in get_user_subscriptions
+    GET /api/subscriptions/{user_id}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyEaze - Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-brand">🏠 DailyEaze</h1>
+            <div style="margin-left:12px">
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#subscriptions">My Subscriptions</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#new-subscription">Add Subscription</a></li>
+                <li><a href="/static/pages/admin.html">Admin</a></li>
+                <li><a href="#" id="userGreeting"></a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Subscriptions Section -->
+        <section id="subscriptions" class="section">
+            <div class="section-header">
+                <h2>📰 My Subscriptions</h2>
+                <button class="btn btn-primary btn-small" onclick="openNewSubscriptionModal()">+ Add</button>
+            </div>
+            <div id="subscriptionsList" class="subscriptions-grid">
+                <p class="loading">Loading subscriptions...</p>
+            </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar" class="section">
+            <h2>📅 Delivery Calendar (2025)</h2>
+            <div style="margin-bottom:12px; display:flex; gap:10px; align-items:center;">
+                <label for="subscriptionSelector">Select subscription to mark deliveries:</label>
+                <select id="subscriptionSelector">
+                    <option value="">-- Select --</option>
+                </select>
+                <div style="margin-left:6px"></div>
+            </div>
+            <div id="deliveryCalendar" class="calendar-container"></div>
+        </section>
+
+        <!-- Payments / Invoices -->
+        <section id="payments" class="section">
+            <h2>💳 Payments & Invoices</h2>
+            <div id="paymentsList">Loading payments...</div>
+        </section>
+
+        <!-- Payment is integrated into subscription modal -->
+    </div>
+
+    <!-- New Subscription Modal -->
+    <div id="subscriptionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('subscriptionModal')">&times;</span>
+            <h2>Create New Subscription</h2>
+
+            <div class="subscription-tabs">
+                <button class="tab-btn active" onclick="switchTab('newspapers')">📰 Newspapers</button>
+                <button class="tab-btn" onclick="switchTab('milk')">🥛 Milk</button>
+                <button class="tab-btn" onclick="switchTab('manage')">⚙️ Manage</button>
+            </div>
+
+            <!-- Newspapers Tab -->
+            <div id="newspapers-tab" class="tab-content active">
+                <h3>Select Newspapers (Multiple Allowed)</h3>
+                <div id="newspapersList" class="items-grid"></div>
+
+                <!-- Language and Genre filters removed to simplify newspaper selection -->
+
+                <h3>Magazines</h3>
+                <p style="font-size:0.95rem;color:#666;margin-bottom:8px">★ Magazines are complementary only on Sundays.
+                </p>
+                <div id="magazinesList" class="items-grid"></div>
+
+                <div id="pricePreview" class="price-preview"
+                    style="margin-top:12px;padding:10px;border-radius:8px;background:#fff;border:1px solid var(--border)">
+                    <strong>Price Preview:</strong>
+                    <div id="pricePreviewContent">Select newspapers to see price (Weekdays: Rs.4 / Weekends: Rs.7)</div>
+                </div>
+            </div>
+
+            <!-- Milk Tab -->
+            <div id="milk-tab" class="tab-content">
+                <h3>Select Milk Brand & Quantity (0.5L units)</h3>
+                <p style="font-size:0.9rem;color:#666;margin-bottom:8px">Choose cow or buffalo milk for each brand. Use
+                    + / - to change by 0.5L.</p>
+                <div id="milkBrands" class="items-grid"></div>
+                <div id="milkTotal"
+                    style="margin-top:10px;padding:10px;border-radius:8px;background:#fff;border:1px solid var(--border);">
+                    <strong>Milk Total:</strong> <span id="milkTotalAmount">Rs.0.00</span>
+                </div>
+            </div>
+
+            <!-- Manage Tab -->
+            <div id="manage-tab" class="tab-content">
+                <h3>Pause / Resume Subscriptions</h3>
+                <div id="manageList">Loading...</div>
+            </div>
+
+            <!-- Frequency Selection -->
+            <div class="form-group">
+                <label for="frequency">Delivery Frequency:</label>
+                <select id="frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p style="font-size: 0.95em; color: #666;">💡 <strong>Get 20% discount if you add milk!</strong></p>
+            </div>
+            <div id="stripe-card-element" style="display:none; margin-top:10px"></div>
+            <div id="card-errors" class="error-message"></div>
+            <div id="razorpay-container"
+                style="display:none; margin-top:15px; padding:15px; border:1px solid #ddd; border-radius:8px; background:#f9f9f9;">
+                <p style="margin-bottom:10px;">Payment via <strong>Razorpay</strong>. Click below to proceed:</p>
+                <button id="razorpay-pay-btn" class="btn btn-primary" onclick="initiateRazorpayPayment()"
+                    style="width:100%">Pay with Razorpay</button>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="createSubscription()">Subscribe & Pay</button>
+        </div>
+    </div>
+
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+</body>
+
+</html>

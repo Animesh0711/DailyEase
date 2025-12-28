@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyEaze - Admin</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-brand">DailyEaze Admin</h1>
+            <ul class="nav-menu">
+                <li><a href="/static/pages/dashboard.html">Dashboard</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="padding:20px;">
+        <h2>Newspapers</h2>
+        <div id="newspapersAdmin"></div>
+        <h3>Add Newspaper</h3>
+        <form id="addNewspaperForm">
+            <input name="name" placeholder="Name" required>
+            <input name="language" placeholder="Language" required>
+            <input name="genre" placeholder="Genre" required>
+            <input name="price_daily" placeholder="Price Daily" type="number" step="0.01" required>
+            <input name="price_weekly" placeholder="Price Weekly" type="number" step="0.01" required>
+            <input name="price_monthly" placeholder="Price Monthly" type="number" step="0.01" required>
+            <input name="description" placeholder="Description">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <hr>
+        <h2>Milk Packages</h2>
+        <div id="milkAdmin"></div>
+        <h3>Add Milk Package</h3>
+        <form id="addMilkForm">
+            <input name="name" placeholder="Name" required>
+            <input name="quantity_ml" placeholder="Quantity (ml)" type="number" required>
+            <input name="price_daily" placeholder="Price Daily" type="number" step="0.01" required>
+            <input name="price_weekly" placeholder="Price Weekly" type="number" step="0.01" required>
+            <input name="price_monthly" placeholder="Price Monthly" type="number" step="0.01" required>
+            <input name="description" placeholder="Description">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/admin.js"></script>
+</body>
+
+</html>
